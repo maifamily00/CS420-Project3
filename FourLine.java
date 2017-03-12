@@ -14,8 +14,30 @@ public class FourLine
 
   public void printBoard() // prints out the contents of the board
   {
+    System.out.print("  ");
+    for(int a = 0; a < board.length; a++){
+      System.out.print(a+1 + " ");
+    }
+    System.out.println();
     for(int i = 0; i < board.length; i++)
     {
+      if(i == 0){
+        System.out.print("A ");
+      } else if ( i == 1){
+        System.out.print("B ");
+      } else if ( i == 2) {
+        System.out.print("C ");
+      } else if ( i == 3) {
+        System.out.print("D ");
+      } else if ( i == 4) {
+        System.out.print("E ");
+      } else if ( i == 5) {
+        System.out.print("F ");
+      } else if ( i == 6) {
+        System.out.print("G ");
+      } else if ( i == 7) {
+        System.out.print("H ");
+      }
       for(int j = 0; j < board[i].length; j++)
       {
         System.out.print(board[i][j] +  " ");
