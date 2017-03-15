@@ -100,7 +100,7 @@ public class FourLine // Game board class
   {
     int counter = 0; // this counter will be used to count the consecutive instances of either 1 or 2
 
-    // This for-loop will check the horizontal axis' for consecutive 4's
+    // This for-loop will check the horizontal axis' for consecutive 4 values
     for(int i = 0; i < 8; i++) // rows
     {
       for(int j = 0; j < 8; j++) // columns
@@ -124,7 +124,7 @@ public class FourLine // Game board class
 
     }
 
-    // this for loop will check the vertical axis for a winner
+    // this for loop will check the vertical axis for a winner with 4 consecutive values
     for(int i = 0; i < 8; i++) // rows
     {
       for(int j = 0; j < 8; j++) // columns'
@@ -147,51 +147,9 @@ public class FourLine // Game board class
       }
     }
 
+    // check the diagonal for a winner
+
     System.out.println("No winner detected"); // test if there are currently no winners
-
-    // check the diagonals for a winner
-
-  }
-
-  public int checkForWinner() // checks the state of the board to determine the winner (Probably gonna rewrite this portion -Sean 2:41 AM :P)
-  {
-    // check the rows for player 1
-    for(int i = 0; i < 5; i++)
-    {
-      for(int j = 0; j < 8; j++)
-      {
-        if(board[i][j] == 1 && board[i + 1][j] == 1 && board[i + 2][j] == 1 && board[i + 3][j] == 1)
-        {
-          return 5000; // possibly filler values
-        }
-      }
-    }
-
-    // check the rows for player 2
-    for(int i = 0; i < 5; i++) // ceiling is 5 since were checking just the rows for 4 consecutive 1's (so index 4 (5) + 4 consecutive 1's will land us in index 7)
-    {
-      for(int j = 0; j < 8; j++)
-      {
-        if(board[i][j] == 2 && board[i + 1][j] == 2 && board[i + 2][j] == 2 && board[i + 3][j] == 2)
-        {
-          return -5000; // possibly filler values
-        }
-      }
-    }
-
-    // check to see if to continue the game
-    for(int i = 0; i < 8; i++)
-    {
-      for(int j = 0; j < 8; j++)
-      {
-        if(board[i][j] == 0)
-        {
-          return 0;
-        }
-      }
-    }
-
-    return 0;
   }
 
 }
