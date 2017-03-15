@@ -1,9 +1,9 @@
 // Sean Kim
 // Loc Mai
 
-public class FourLine
+public class FourLine // Game board class
 {
-  int[][] board = new int[8][8];
+  int[][] board = new int[8][8]; // 8 x 8 grid used to play the four in a row game
 
   public static void main(String[] args) // used for testing methods
   {
@@ -16,12 +16,12 @@ public class FourLine
   {
     System.out.print("  ");
     for(int a = 0; a < board.length; a++){
-      System.out.print(a+1 + " ");
+      System.out.print(a + 1 + " ");
     }
     System.out.println();
     for(int i = 0; i < board.length; i++)
     {
-      if(i == 0){
+      if(i == 0){ // prints out the Row letters A-H
         System.out.print("A ");
       } else if ( i == 1){
         System.out.print("B ");
@@ -72,7 +72,7 @@ public class FourLine
     }
 
     // check the rows for player 2
-    for(int i = 0; i < 5; i++) // ceiling is 5 since were checking just the rows for 4 consecutive 1's
+    for(int i = 0; i < 5; i++) // ceiling is 5 since were checking just the rows for 4 consecutive 1's (so index 4 (5) + 4 consecutive 1's will land us in index 7)
     {
       for(int j = 0; j < 8; j++)
       {
