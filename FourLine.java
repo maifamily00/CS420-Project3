@@ -1,5 +1,6 @@
 // Sean Kim
 // Loc Mai
+// 4 in a line
 
 public class FourLine // Game board class
 {
@@ -10,16 +11,28 @@ public class FourLine // Game board class
     FourLine fl = new FourLine();// test instantiate the object to run some of the methods
     fl.setup(); // test setup
     fl.printBoard(); // test printBoard
+    // fl.setSquare(1, 1, 2); // test values for horizontal winnner
+    // fl.setSquare(1, 2, 2);
+    // fl.setSquare(1, 3, 2);
+    // fl.setSquare(1, 4, 2); // 4 in a row
+
+    fl.setSquare(1, 1, 2); // test values for vertical winner
+    fl.setSquare(2, 1, 2);
+    fl.setSquare(3, 1, 2);
+    fl.setSquare(4, 1, 2);
+
+    fl.printBoard();
+    fl.checkForWinner(2); // check if there's an instance of 4 in a row for player 1
   }
 
   public int getSquare(int x, int y) // return int value of the selected square
   {
-    return board[x + 1][y + 1]; // returns the value of the specified square
+    return board[x][y]; // returns the value of the specified square
   }
 
   public void setSquare(int x, int y, int turn) // 'turn' variable will contain either 1 or 2 that represents both of the players and specifies who's turn it is
   {
-    board[x + 1][y + 1] = turn; // will set the value of a square at (x,y) to the value of turn, either 1 or 2
+    board[x][y] = turn; // will set the value of a square at (x,y) to the value of turn, either 1 or 2
   }
 
   public void printBoard() // prints out the contents of the board
@@ -69,6 +82,7 @@ public class FourLine // Game board class
       }
       System.out.println();
     }
+    System.out.println();
   }
 
   public void setup() // the initial setup of the board
@@ -77,9 +91,66 @@ public class FourLine // Game board class
     {
       for(int j = 0; j < board[i].length; j++)
       {
-        board[i][j] = 0;
+        board[i][j] = 0; // populates the board with all zeros, which is the neutral state of the game
       }
     }
+  }
+
+  public void checkForWinner(int playerTurn)
+  {
+    int counter = 0; // this counter will be used to count the consecutive instances of either 1 or 2
+
+    // This for-loop will check the horizontal axis' for consecutive 4's
+    for(int i = 0; i < 8; i++) // rows
+    {
+      for(int j = 0; j < 8; j++) // columns
+      {
+        if(board[j][i] != 0)
+        {
+          counter++;
+          System.out.println("Counter value: " +  counter);
+          if(counter == 4)
+          {
+            System.out.println("Player " + playerTurn + " is the winner!");
+            System.exit(0); // quits the program once the winner has been decided
+          }
+        }
+        else if(board[j][i] == 0)
+        {
+          counter = 0; // reset counter if the value is 0 (neutral square)
+          System.out.println("Counter value: " +  counter); // test
+        }
+      }
+
+    }
+
+    // this for loop will check the vertical axis for a winner
+    for(int i = 0; i < 8; i++) // rows
+    {
+      for(int j = 0; j < 8; j++) // columns'
+      {
+        if(board[i][j] == playerTurn)
+        {
+          counter++;
+          System.out.println("Counter value: " +  counter); //test
+          if(counter == 4)
+          {
+            System.out.println("Player " + playerTurn + " is the winner!");
+            System.exit(0); // quits the program once the winner has been decided
+          }
+        }
+        else if(board[i][j] == 0)
+        {
+          counter = 0; // reset counter if the value is 0 (neutral square)
+          System.out.println("Counter value: " +  counter);
+        }
+      }
+    }
+
+    System.out.println("No winner detected"); // test if there are currently no winners
+
+    // check the diagonals for a winner
+
   }
 
   public int checkForWinner() // checks the state of the board to determine the winner (Probably gonna rewrite this portion -Sean 2:41 AM :P)
