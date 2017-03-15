@@ -12,33 +12,58 @@ public class FourLine // Game board class
     fl.printBoard(); // test printBoard
   }
 
+  public int getSquare(int x, int y) // return int value of the selected square
+  {
+    return board[x + 1][y + 1]; // returns the value of the specified square
+  }
+
+  public void setSquare(int x, int y, int turn) // 'turn' variable will contain either 1 or 2 that represents both of the players and specifies who's turn it is
+  {
+    board[x + 1][y + 1] = turn; // will set the value of a square at (x,y) to the value of turn, either 1 or 2
+  }
+
   public void printBoard() // prints out the contents of the board
   {
     System.out.print("  ");
     for(int a = 0; a < board.length; a++){
-      System.out.print(a + 1 + " ");
+      System.out.print(a + 1 + " "); // gets the value of the incrementor a and adds one to label the columns
     }
     System.out.println();
     for(int i = 0; i < board.length; i++)
     {
-      if(i == 0){ // prints out the Row letters A-H
+      if(i == 0) // prints out the Row letters A-H
+      {
         System.out.print("A ");
-      } else if ( i == 1){
+      }
+      else if ( i == 1)
+      {
         System.out.print("B ");
-      } else if ( i == 2) {
+      }
+      else if ( i == 2)
+      {
         System.out.print("C ");
-      } else if ( i == 3) {
+      }
+      else if ( i == 3)
+      {
         System.out.print("D ");
-      } else if ( i == 4) {
+      }
+      else if ( i == 4)
+      {
         System.out.print("E ");
-      } else if ( i == 5) {
+      }
+      else if ( i == 5)
+      {
         System.out.print("F ");
-      } else if ( i == 6) {
+      }
+      else if ( i == 6)
+      {
         System.out.print("G ");
-      } else if ( i == 7) {
+      }
+      else if ( i == 7)
+      {
         System.out.print("H ");
       }
-      for(int j = 0; j < board[i].length; j++)
+      for(int j = 0; j < board[i].length; j++) // prints out the actual board
       {
         System.out.print(board[i][j] +  " ");
       }
